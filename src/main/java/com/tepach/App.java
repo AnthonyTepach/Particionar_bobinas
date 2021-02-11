@@ -46,12 +46,9 @@ public class App extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jtf_dvidiren = new javax.swing.JTextField();
         jb_partir = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Particionar bobinas");
-        setResizable(false);
 
         JB_cargartxt.setText("Cargar BD");
         JB_cargartxt.addActionListener(new java.awt.event.ActionListener() {
@@ -68,7 +65,7 @@ public class App extends javax.swing.JFrame {
         jtf_cantidaddetxt.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jtf_cantidaddetxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        jLabel1.setText("Cantidad de bobinas nuevas");
+        jLabel1.setText("Cantidad de folios por bobina");
 
         jtf_dvidiren.setEditable(false);
         jtf_dvidiren.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -99,7 +96,7 @@ public class App extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                     .addComponent(jtf_dvidiren))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(206, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jb_partir)
@@ -121,9 +118,6 @@ public class App extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jList1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jScrollPane1.setViewportView(jList1);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,8 +129,7 @@ public class App extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jtxt_ruta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JB_cargartxt))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE))
+                        .addComponent(JB_cargartxt)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -148,8 +141,6 @@ public class App extends javax.swing.JFrame {
                     .addComponent(jtxt_ruta))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -182,17 +173,8 @@ public class App extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Se crearan " + division + " archivos en la ruta: \n" + archivo.carpetaTxt(ruta), "Información", JOptionPane.INFORMATION_MESSAGE);
                 String guarda_en=archivo.carpetaTxt(ruta);
                 dividir.particiona(ruta, guarda_en, cantidad);
-                String aa[]=archivo.listArchivos(guarda_en);
-                if (aa!=null) {
-                    DefaultListModel modelo = new DefaultListModel();
-                    for (String aa1 : aa) {
-                        modelo.addElement(aa1);
-                    }
-                    jList1.setModel(modelo);
-                }else{
-                    JOptionPane.showMessageDialog(rootPane, "No hay ficheros en el directorio especificado");
-                }
-            }
+                
+                           }
         }else{
             JOptionPane.showMessageDialog(rootPane, "Ingresa la cantidad de lineas por archivo");
         }
@@ -242,9 +224,7 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JButton JB_cargartxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLbl_numlineas;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jb_partir;
     private javax.swing.JTextField jtf_cantidaddetxt;
     private javax.swing.JTextField jtf_dvidiren;

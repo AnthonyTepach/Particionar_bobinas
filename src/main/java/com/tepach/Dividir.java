@@ -27,7 +27,7 @@ public class Dividir {
             File fileToRead = new File(fileLocation);
             int fileCounter = 0;
             int counter = 1;
-            List<String> newLines = new ArrayList<>();
+            List<String> newLines = new ArrayList();
 
             LineIterator it = FileUtils.lineIterator(fileToRead);
             try {
@@ -50,7 +50,7 @@ public class Dividir {
                 }
             } finally {
                 LineIterator.closeQuietly(it);
-               
+                JOptionPane.showMessageDialog(null, "Guardado");
             }
         } catch (IOException ex) {
             ex.printStackTrace();
